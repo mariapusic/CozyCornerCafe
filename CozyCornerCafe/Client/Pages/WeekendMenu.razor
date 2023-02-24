@@ -1,0 +1,36 @@
+﻿@page "/weekendmenu"
+@using CozyCornerCafe.Shared
+@inject HttpClient _Client
+
+<div id="fontss">
+<h1 class="CustomTextTitle text-light text-center">Meny helg</h1>
+
+@{
+	List<ProductDto> Desserts = AllProducts.Where(x => x.IsWeekend).ToList();
+}
+<div class="menu-section-header h3 text-center text-light CustomTextTitle m-5">Desserter</div>
+<div class="row text-center">
+	<div class="col-6 h5 text-light">
+		@for (int i = 0; i < Desserts.Count / 2; i++)
+		{
+			<p>@Desserts[i].Name @Desserts[i].Price kr</p>
+		}
+	</div>
+	<div class="col-6 h5 text-light">
+		@for (int i = Desserts.Count / 2; i < Desserts.Count; i++)
+		{
+			<p>
+				@Desserts[i].Name &nbsp;@if (Desserts[i].Price > 0)
+				                        {
+					                        <span> @Desserts[i].Price kr</span>
+				                        }
+			</p>
+		}
+	</div>
+	<hr class="zigzag" />
+</div>
+</div>
+
+@code {
+
+}

@@ -1,0 +1,88 @@
+﻿@page "/workdaymenu"
+@using CozyCornerCafe.Shared
+@inject HttpClient _Client
+@inject PublicClient _PublicClient
+<div id="fontss">
+<h1 class="CustomTextTitle text-light text-center">Meny</h1>
+<div class="menu-section-header h3 text-center text-light CustomTextTitle m-5">Varma drycker</div>
+<div class="row text-center">
+
+	@{
+		List<ProductDto> hotBeverages = AllProducts.Where(x => x.Category == "Varma drycker").ToList();
+	}
+	<div class="col-6 h5 text-light" >
+		@for (int i = 0; i < hotBeverages.Count / 2; i++)
+		{
+			<p>@hotBeverages[i].Name @hotBeverages[i].Price kr</p>
+		}
+	</div>
+	<div class="col-6 h5 text-light">
+		@for (int i = hotBeverages.Count / 2; i < hotBeverages.Count; i++)
+		{
+			<p>@hotBeverages[i].Name @hotBeverages[i].Price kr</p>
+		}
+	</div>
+	<hr class="zigzag" />
+</div>
+<div class="menu-section-header h3 text-center text-light CustomTextTitle m-3" id="fontss2">Kalla drycker</div>
+<div class="row text-center text-light">
+	@{
+		List<ProductDto> coldBeverages = AllProducts.Where(x => x.Category == "Kalla drycker").ToList();
+	}
+	<div class="col-6 h5 text-light">
+		@for (int i = 0; i < coldBeverages.Count / 2; i++)
+		{
+			<p>@coldBeverages[i].Name @coldBeverages[i].Price kr</p>
+		}
+	</div>
+	<div class="col-6 h5 text-light">
+		@for (int i = coldBeverages.Count / 2; i < coldBeverages.Count; i++)
+		{
+			<p>@coldBeverages[i].Name @coldBeverages[i].Price kr</p>
+		}
+	</div>
+</div>
+<hr class="zigzag"/>
+<div class="menu-section-header h3 text-center text-light CustomTextTitle m-3">Panini</div>
+<div class="row text-center text-light">
+	@{
+		List<ProductDto> panini = AllProducts.Where(x => x.Category == "Panini").ToList();
+	}
+	<div class="col-6 h5 text-light">
+		@for (int i = 0; i < panini.Count / 2; i++)
+		{
+			<p>@panini[i].Name @panini[i].Price kr</p>
+		}
+	</div>
+	<div class="col-6 h5 text-light">
+		@for (int i = panini.Count / 2; i < panini.Count; i++)
+		{
+			<p>@panini[i].Name @panini[i].Price kr</p>
+		}
+	</div>
+</div>
+<hr/>
+<div class="menu-section-header h3 text-center text-light CustomTextTitle m-3">Paj</div>
+<div class="row text-center text-light">
+	@{
+		List<ProductDto> paj = AllProducts.Where(x => x.Category == "Paj").ToList();
+	}
+	<div class="col-6 h5 text-light">
+		@for (int i = 0; i < paj.Count / 2; i++)
+		{
+			<p>@paj[i].Name @paj[i].Price kr</p>
+		}
+	</div>
+	<div class="col-6 h5 text-light">
+		@for (int i = paj.Count / 2; i < paj.Count; i++)
+		{
+			<p>
+				@paj[i].Name &nbsp;@if (paj[i].Price > 0)
+				{
+					<span> @paj[i].Price kr</span>
+				}
+			</p>
+		}
+	</div>
+</div>
+</div>
